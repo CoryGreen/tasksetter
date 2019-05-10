@@ -1,29 +1,36 @@
 package com.corygreen.tasksetter;
 
-import java.io.Serializable;
+// import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "reminders")
-public class Reminder implements Serializable {
-	private static final long serialVersionUID = 3L;
+public class Reminder/* implements Serializable*/ {
+	// private static final long serialVersionUID = 3L;
 	
 	@Id
-	@Column(name = "reminder_id", unique = true)
-	private int reminderID;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long reminderID;
 	@Column(name = "reminder_time", nullable = false)
 	private String reminderTime;
 	@Column(name = "task_id", nullable = false)
-	private int taskID;
+	private Long taskID;
+
+	public Reminder() {
+
+	}
+
+	public Reminder(Long reminderID, String reminderTime, Long taskID) {
+		this.reminderID = reminderID;
+		this.reminderTime = reminderTime;
+		this.taskID = taskID;
+	}
 	
-	public int getReminderID() {
+	public Long getReminderID() {
 		return reminderID;
 	}
-	public void setReminderID(int reminderID) {
+	public void setReminderID(Long reminderID) {
 		this.reminderID = reminderID;
 	}
 	public String getReminderTime() {
@@ -32,10 +39,10 @@ public class Reminder implements Serializable {
 	public void setReminderTime(String reminderTime) {
 		this.reminderTime = reminderTime;
 	}
-	public int getTaskID() {
+	public Long getTaskID() {
 		return taskID;
 	}
-	public void setTaskID(int taskID) {
+	public void setTaskID(Long taskID) {
 		this.taskID = taskID;
 	}
 	

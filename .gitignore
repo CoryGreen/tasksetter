@@ -8,3 +8,9 @@
 *.war
 *.ear
 hs_err_pid*
+
+tasksetter-homepage.html
+tasksetter-list.html
+tasksetter.iml
+tasksetterscript.js
+tasksetterstyling.css

@@ -10,7 +10,7 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 public class TestSystem {
-	private static EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence
+/*	private static EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence
 			.createEntityManagerFactory("tasksetter");
 			
 	public static void main(String[] args) {
@@ -134,5 +134,5 @@ public class TestSystem {
 		finally {
 			em.close();
 		}
-	}
+	}*/
 }

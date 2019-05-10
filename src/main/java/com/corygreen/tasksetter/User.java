@@ -1,20 +1,17 @@
 package com.corygreen.tasksetter;
 
-import java.io.Serializable;
+// import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
+public class User/* implements Serializable*/ {
+	// private static final long serialVersionUID = 1L;
+
 	@Id
-	@Column(name = "user_id", unique = true)
-	private int userID;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long userID;
 	@Column(name = "name", nullable = false)
 	private String name;
 	@Column(name = "e_mail", nullable = false)
@@ -23,11 +20,23 @@ public class User implements Serializable {
 	private String password;
 	@Column(name = "date_user_joined", nullable = true)
 	private String dateUserJoined;
-	
-	public int getUserID() {
+
+	public User() {
+
+	}
+
+	public User(Long userID, String name, String email, String password, String dateUserJoined) {
+		this.userID = userID;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.dateUserJoined = dateUserJoined;
+	}
+
+	public Long getUserID() {
 		return userID;
 	}
-	public void setUserID(int userID) {
+	public void setUserID(Long userID) {
 		this.userID = userID;
 	}
 	public String getName() {

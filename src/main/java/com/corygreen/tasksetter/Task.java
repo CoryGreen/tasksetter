@@ -1,20 +1,17 @@
 package com.corygreen.tasksetter;
 
-import java.io.Serializable;
+// import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tasks")
-public class Task implements Serializable {
-	private static final long serialVersionUID = 2L;
+public class Task/* implements Serializable*/ {
+	// private static final long serialVersionUID = 2L;
 	
 	@Id
-	@Column(name = "task_id", unique = true)
-	private int taskID;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long taskID;
 	@Column(name = "description", nullable = false)
 	private String description;
 	@Column(name = "time_task_set", nullable = true)
@@ -22,13 +19,28 @@ public class Task implements Serializable {
 	@Column(name = "task_deadline", nullable = false)
 	private String taskDeadline;
 	@Column(name = "user_id", nullable = false)
-	private int userID;
+	private Long userID;
+	@Column(name = "task_complete", nullable = false)
+	private Boolean taskComplete;
 
-	public int getTaskID() {
+	public Task() {
+
+	}
+
+	public Task(Long taskID, String description, String timeTaskSet, String taskDeadline, Long userID) {
+		this.taskID = taskID;
+		this.description = description;
+		this.timeTaskSet = timeTaskSet;
+		this.taskDeadline = taskDeadline;
+		this.userID = userID;
+		this.taskComplete = taskComplete;
+	}
+
+	public Long getTaskID() {
 		return taskID;
 	}
 
-	public void setTaskID(int taskID) {
+	public void setTaskID(Long taskID) {
 		this.taskID = taskID;
 	}
 
@@ -50,10 +62,12 @@ public class Task implements Serializable {
 	public void setTaskDeadline(String taskDeadline) {
 		this.taskDeadline = taskDeadline;
 	}
-	public int getUserID() {
+	public Long getUserID() {
 		return userID;
 	}
-	public void setUserID(int userID) {
+	public void setUserID(Long userID) {
 		this.userID = userID;
 	}
+	public Boolean getTaskComplete() { return taskComplete; }
+	public void setTaskComplete(Boolean taskComplete) { this.taskComplete = taskComplete; }
 }
