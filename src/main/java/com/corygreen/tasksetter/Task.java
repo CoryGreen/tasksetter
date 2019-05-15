@@ -16,7 +16,7 @@ public class Task/* implements Serializable*/ {
 	private String description;
 	@Column(name = "time_task_set", nullable = true)
 	private String timeTaskSet;
-	@Column(name = "task_deadline", nullable = false)
+	@Column(name = "task_deadline", nullable = true)
 	private String taskDeadline;
 	@Column(name = "user_id", nullable = false)
 	private Long userID;
